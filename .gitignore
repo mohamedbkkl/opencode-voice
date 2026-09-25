@@ -1,0 +1,27 @@
+node_modules/
+dist/
+dist-test/
+*.tgz
+*.log
+npm-debug.log*
+
+# local audio / models / temp
+*.wav
+*.mp3
+*.bin
+*.gguf
+*.pt
+tmp/
+.opencode-voice/
+
+# local dev config overrides
+.opencode-voice.json
+.opencode/opencode-voice.json
+voice-dev.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,79 @@
+{
+  "name": "opencode-voice",
+  "version": "0.2.0",
+  "description": "Local voice-to-text for OpenCode. Record from the TUI, transcribe locally with transcribe.cpp or whisper.cpp, insert into the correct composer.",
+  "type": "module",
+  "license": "MIT",
+  "author": "",
+  "bin": {
+    "opencode-voice": "./dist/setup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohamedbkkl/opencode-voice.git"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "voice",
+    "speech-to-text",
+    "whisper"
+  ],
+    "main": "./dist/server.js",
+  "exports": {
+    ".": {
+      "import": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./tui": {
+      "import": "./dist/tui-v2.js",
+      "types": "./dist/tui-v2.d.ts"
+    },
+    "./server": {
+      "import": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "index.ts",
+    "tui.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20",
+    "opencode": ">=1.18.29"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json",
+    "test": "tsc -p tsconfig.test.json && node --test \"dist-test/test/**/*.test.js\"",
+    "test:unit": "npm test",
+    "build:transcribe-cpp": "sh scripts/build-transcribe-cpp.sh",
+    "diagnose": "tsc -p tsconfig.test.json && node dist-test/scripts/diagnose.js",
+    "setup": "node dist/setup.js setup",
+    "setup:check": "node dist/setup.js setup --check",
+    "prepack": "npm run build",
+    "clean": "rm -rf dist dist-test"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": "^1.0.0",
+    "@opencode/plugin": "^2.0.0"
+  },
+  "dependencies": {
+    "@opentui/solid": "^0.5.10",
+    "solid-js": "^1.9.12"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "1.18.32",
+    "@opencode/plugin": "2.0.14",
+    "@opencode/theme": "^2.0.14",
+    "@opentui/core": "^0.5.10",
+    "@opentui/solid": "^0.5.10",
+    "@types/node": "^22.7.4",
+    "solid-js": "^1.9.12",
+    "typescript": "^5.6.3"
+  }
+}
